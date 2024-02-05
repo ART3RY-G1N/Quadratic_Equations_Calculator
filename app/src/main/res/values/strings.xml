@@ -7,6 +7,7 @@
     <string name="c">c</string>
     <string name="calculate">CALCULATE</string>
     <string name="result">Equation Roots</string>
+    <string name="error_message">Error! Incorrect input!</string>
     <string name="no_roots">No real roots</string>
     <string name="all_numbers">Any number can be the root of the equation</string>
 </resources>

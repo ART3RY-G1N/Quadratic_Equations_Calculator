@@ -16,32 +16,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void solveEquation(View view) {
-        double a = Double.parseDouble( ((EditText) findViewById(R.id.coefficient_a)).getText().toString() );
-        double b = Double.parseDouble( ((EditText) findViewById(R.id.coefficient_b)).getText().toString() );
-        double c = Double.parseDouble( ((EditText) findViewById(R.id.coefficient_c)).getText().toString() );
-
         TextView result = findViewById(R.id.answer);
+        try {
+            double a = Double.parseDouble(((EditText) findViewById(R.id.coefficient_a)).getText().toString());
+            double b = Double.parseDouble(((EditText) findViewById(R.id.coefficient_b)).getText().toString());
+            double c = Double.parseDouble(((EditText) findViewById(R.id.coefficient_c)).getText().toString());
 
-        if (a == 0) {
-            if (b == 0) {
-                if (c == 0) {
-                    result.setText(R.string.all_numbers);
+            if (a == 0) {
+                if (b == 0) {
+                    if (c == 0) {
+                        result.setText(R.string.all_numbers);
+                    } else {
+                        result.setText(R.string.no_roots);
+                    }
                 } else {
-                    result.setText(R.string.no_roots);
+                    result.setText(String.valueOf(-c / b));
                 }
             } else {
-                result.setText(String.valueOf(-c / b));
+                double d = b * b - 4 * a * c;
+                if (d < 0) {
+                    result.setText(R.string.no_roots);
+                } else if (d == 0) {
+                    result.setText(String.valueOf(-b / (2 * a)));
+                } else {
+                    String answer = ((-b - Math.sqrt(d)) / (2 * a)) + "; " + ((-b + Math.sqrt(d)) / (2 * a));
+                    result.setText(answer);
+                }
             }
-        } else {
-            double d = b * b - 4 * a * c;
-            if (d < 0) {
-                result.setText(R.string.no_roots);
-            } else if (d == 0) {
-                result.setText(String.valueOf(-b / (2 * a)));
-            } else {
-                String answer = ((-b - Math.sqrt(d)) / (2 * a)) + "; " + ((-b + Math.sqrt(d)) / (2 * a));
-                result.setText(answer);
-            }
+        } catch (NumberFormatException e) {
+            result.setText(R.string.error_message);
         }
     }
 }
