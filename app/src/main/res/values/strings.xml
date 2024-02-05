@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Quadratic Equations Calculator</string>
+    <string name="title">Quadratic Equations Calculator</string>
+    <string name="description">This application solves equations\nof the form\nax^2 + bx + c = 0</string>
+    <string name="a">a</string>
+    <string name="b">b</string>
+    <string name="c">c</string>
+    <string name="calculate">CALCULATE</string>
+    <string name="result">Equation Roots</string>
+    <string name="no_roots">No real roots</string>
+    <string name="all_numbers">Any number can be the root of the equation</string>
+</resources>
